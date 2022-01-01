@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toleey.lifecommunity.dao.WorkMapper">
+
+    <select id="findAllOpus" resultType="Opus">
+        SELECT
+               w.*,u.avator as avatorImg,u.userName
+        FROM
+             work w INNER JOIN user u ON w.phoneNumber = u.phoneNumber
+        ORDER BY
+                 createdTime DESC
+    </select>
+
+    <select id="findAllWorks" resultType="Work">
+        SELECT * FROM work
+    </select>
+
+    <select id="findAnOpus" parameterType="Integer" resultType="Opus">
+        SELECT
+               w.*,u.avator as avatorImg,u.userName
+        FROM
+             work w INNER JOIN user u ON w.phoneNumber = u.phoneNumber
+        WHERE
+              w.id = #{id}
+    </select>
+
+    <insert id="insertAWork" parameterType="Work">
+        INSERT  INTO
+            work (pic,title,createdTime,`like`,phoneNumber)
+        VALUES
+                (#{pic},#{title},#{createdTime},#{like},#{phoneNumber})
+    </insert>
+
+    <update id="addALike" parameterType="Integer">
+        UPDATE work SET `like`=`like`+1 WHERE id = #{workId}
+    </update>
+
+    <select id="getAllWorksByPhoneNumber" parameterType="String" resultType="Work">
+        SELECT * FROM work WHERE phoneNumber = #{phoneNumber}
+    </select>
+
+    <select id="getWorkCountByPhoneNumber" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM `work` WHERE phoneNumber = #{phoneNumber}
+    </select>
+
+</mapper>

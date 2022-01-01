@@ -12,6 +12,25 @@ public class User {
   private String phoneNumber;
   private java.sql.Timestamp createdTime;
   private String email;
+  private long message;
+  private long like;
+  private long post;
+
+  public User() {
+  }
+
+  public User(long id, String avator, String userName, String password, String phoneNumber, Timestamp createdTime, String email, long message, long like, long post) {
+    this.id = id;
+    this.avator = avator;
+    this.userName = userName;
+    this.password = password;
+    this.phoneNumber = phoneNumber;
+    this.createdTime = createdTime;
+    this.email = email;
+    this.message = message;
+    this.like = like;
+    this.post = post;
+  }
 
   public long getId() {
     return id;
@@ -69,6 +88,30 @@ public class User {
     this.email = email;
   }
 
+  public long getMessage() {
+    return message;
+  }
+
+  public void setMessage(long message) {
+    this.message = message;
+  }
+
+  public long getLike() {
+    return like;
+  }
+
+  public void setLike(long like) {
+    this.like = like;
+  }
+
+  public long getPost() {
+    return post;
+  }
+
+  public void setPost(long post) {
+    this.post = post;
+  }
+
   @Override
   public String toString() {
     return "User{" +
@@ -79,6 +122,9 @@ public class User {
             ", phoneNumber='" + phoneNumber + '\'' +
             ", createdTime=" + createdTime +
             ", email='" + email + '\'' +
+            ", message=" + message +
+            ", like=" + like +
+            ", post=" + post +
             '}';
   }
 }

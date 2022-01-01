@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toleey.lifecommunity.dao.CommentMapper">
+
+    <select id="findAWorkComment" parameterType="Integer" resultType="Discuss">
+        SELECT c.*,u.avator as avatorImg,u.userName
+        FROM comment c INNER JOIN user u ON c.phoneNumber=u.phoneNumber
+        WHERE c.workId=#{workId}
+        ORDER BY createdTime DESC
+    </select>
+    
+    <insert id="insertAComment" parameterType="Comment">
+        INSERT INTO
+            comment (content, `like`, phoneNumber, workId, replyId, createdTime)
+        VALUES
+            (#{content},#{like},#{phoneNumber},#{workId},#{replyId},#{createdTime})
+    </insert>
+
+    <update id="addALike" parameterType="Integer">
+        UPDATE comment SET `like`=`like`+1 WHERE id = #{commentId}
+    </update>
+
+</mapper>
