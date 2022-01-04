@@ -20,4 +20,12 @@
         UPDATE comment SET `like`=`like`+1 WHERE id = #{commentId}
     </update>
 
+    <insert id="addCommentToLike" parameterType="Comment">
+        INSERT  INTO commentLike (commentId, phoneNumber) values (#{commentId},#{phoneNumber})
+    </insert>
+    
+    <select id="getCommentIsLike" parameterType="Comment" resultType="Integer">
+        SELECT COUNT(*) FROM `commentLike` WHERE phoneNumber = #{phoneNumber} AND commentId = #{commentId}
+    </select>
+
 </mapper>

@@ -2,7 +2,9 @@ package com.toleey.lifecommunity.controller;
 
 import com.toleey.lifecommunity.dao.CommentMapper;
 import com.toleey.lifecommunity.pojo.Comment;
+import com.toleey.lifecommunity.pojo.CommentLike;
 import com.toleey.lifecommunity.pojo.Discuss;
+import com.toleey.lifecommunity.pojo.WorkLike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
@@ -69,6 +71,36 @@ public class CommentController {
         String cId = request.getParameter("commentId");
         Integer commentId = Integer.parseInt(cId);
         return commentMapper.addALike(commentId);
+    }
+
+    //记录用户评论点赞
+    @ResponseBody
+    @RequestMapping("/likeThisComment")
+    public Integer addCommentToLike(HttpServletRequest request){
+        String cId = request.getParameter("commentId");
+        Integer commentId = Integer.parseInt(cId);
+        String phoneNumber = request.getParameter("phoneNumber");
+
+        CommentLike commentLike = new CommentLike();
+        commentLike.setCommentId(commentId);
+        commentLike.setPhoneNumber(phoneNumber);
+
+        return commentMapper.addCommentToLike(commentLike);
+    }
+    //查看用户评论是否点赞
+    @ResponseBody
+    @RequestMapping("/getCommentIsLike")
+    public Integer getCommentIsLike(HttpServletRequest request){
+        String cId = request.getParameter("commentId");
+        Integer commentId = Integer.parseInt(cId);
+        String phoneNumber = request.getParameter("phoneNumber");
+
+        CommentLike commentLike = new CommentLike();
+        commentLike.setCommentId(commentId);
+        commentLike.setPhoneNumber(phoneNumber);
+
+        System.out.println(commentLike);
+        return commentMapper.getCommentIsLike(commentLike);
     }
 
 }

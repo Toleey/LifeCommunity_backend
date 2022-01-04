@@ -43,4 +43,24 @@
         SELECT COUNT(*) FROM `work` WHERE phoneNumber = #{phoneNumber}
     </select>
 
+    <select id="getAllPicturesByWorkId" parameterType="Integer" resultType="Picture">
+        SELECT * FROM picture WHERE workId = #{workId}
+    </select>
+
+    <insert id="addWorkToLike" parameterType="WorkLike">
+        INSERT INTO `workLike` (phoneNumber, workId) values (#{phoneNumber},#{workId})
+    </insert>
+
+    <select id="getAllLikeWork" parameterType="String" resultType="Work">
+        SELECT w.* 	FROM `workLike` l INNER JOIN `work` w ON w.id = l.workId WHERE l.phoneNumber = #{phoneNumber}
+    </select>
+
+    <select id="getCountLike" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM `workLike` l INNER JOIN `work` w ON w.id = l.workId WHERE l.phoneNumber = #{phoneNumber}
+    </select>
+
+    <select id="getIsLike" parameterType="WorkLike" resultType="Integer">
+        SELECT COUNT(*) FROM `workLike` WHERE phoneNumber = #{phoneNumber} AND workId = #{workId}
+    </select>
+
 </mapper>
