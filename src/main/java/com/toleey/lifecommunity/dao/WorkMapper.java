@@ -45,5 +45,8 @@ public interface WorkMapper {
     //查看用户是否点赞了
     public Integer getIsLike(WorkLike workLike);
 
+    //用户取消点赞
+    public Integer cancelLike(WorkLike workLike);
+
 
 }

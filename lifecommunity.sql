@@ -11,7 +11,7 @@
  Target Server Version : 50731
  File Encoding         : 65001
 
- Date: 04/01/2022 10:48:33
+ Date: 05/01/2022 09:47:28
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `comment` (
   `replyId` int(11) DEFAULT NULL,
   `createdTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
@@ -61,6 +61,10 @@ INSERT INTO `comment` VALUES (22, 'hi', 1, '13012341234', 25, 0, '2022-01-03 13:
 INSERT INTO `comment` VALUES (23, '谢谢', 2, '18212341234', 26, 0, '2022-01-03 13:13:40');
 INSERT INTO `comment` VALUES (24, '不客气', 2, '13012341234', 26, 0, '2022-01-03 13:13:51');
 INSERT INTO `comment` VALUES (25, '挺不错的', 1, '18866666666', 27, 0, '2022-01-03 14:28:49');
+INSERT INTO `comment` VALUES (26, '这次一定能过！', 0, '13012341234', 30, 0, '2022-01-04 15:36:12');
+INSERT INTO `comment` VALUES (27, 'Hi', 0, '13012341234', 31, 0, '2022-01-05 00:24:06');
+INSERT INTO `comment` VALUES (28, 'A GOOD PICTURE!', 1, '16612341234', 30, 0, '2022-01-05 01:09:25');
+INSERT INTO `comment` VALUES (29, 'Hi', 1, '16612341234', 33, 0, '2022-01-05 01:10:00');
 COMMIT;
 
 -- ----------------------------
@@ -72,7 +76,7 @@ CREATE TABLE `commentLike` (
   `commentId` int(11) DEFAULT NULL,
   `phoneNumber` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of commentLike
@@ -88,6 +92,8 @@ INSERT INTO `commentLike` VALUES (50, 23, '13012341234');
 INSERT INTO `commentLike` VALUES (51, 24, '13012341234');
 INSERT INTO `commentLike` VALUES (52, 24, '18212341234');
 INSERT INTO `commentLike` VALUES (53, 25, '18866666666');
+INSERT INTO `commentLike` VALUES (54, 28, '16612341234');
+INSERT INTO `commentLike` VALUES (55, 29, '16612341234');
 COMMIT;
 
 -- ----------------------------
@@ -125,24 +131,22 @@ CREATE TABLE `user` (
   `like` int(255) DEFAULT NULL,
   `post` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 BEGIN;
 INSERT INTO `user` VALUES (1, 'http://127.0.0.1:8088/2022/01/02/6ef3a93d-8b7e-4490-82bd-88187cbbebbf.jpeg', '泡泡龙', '123', '13012341234', '2021-12-18 23:06:02', 'a@a.com', 1, 1, 1);
-INSERT INTO `user` VALUES (2, '123', '123', '123', '123', '2021-12-13 23:42:12', '123', 0, 0, 0);
 INSERT INTO `user` VALUES (7, 'https://gravatar.zeruns.tech/avatar/2aeb599ab872efb092bce259f75d6154?s=256&d=wavatar', 'LCUser-8093', '12345', '13012341233', '2021-12-18 16:08:27', '', 0, 0, 0);
 INSERT INTO `user` VALUES (8, 'https://gravatar.zeruns.tech/avatar/2aeb599ab872efb092bce259f75d6154?s=256&d=wavatar', 'LCUser-8GQ8', '123', '13012341232', '2021-12-18 16:18:00', '', 0, 0, 0);
 INSERT INTO `user` VALUES (9, 'https://gravatar.zeruns.tech/avatar/2aeb599ab872efb092bce259f75d6154?s=256&d=wavatar', 'LCUser-lb50', '1234', '12312341234', '2021-12-18 16:22:46', '', 0, 0, 0);
 INSERT INTO `user` VALUES (10, 'https://gravatar.zeruns.tech/avatar/2aeb599ab872efb092bce259f75d6154?s=256&d=wavatar', 'LCUser-YR9e', '897', '18819901890', '2021-12-18 16:24:07', '', 0, 0, 0);
 INSERT INTO `user` VALUES (12, 'https://gravatar.zeruns.tech/avatar/2aeb599ab872efb092bce259f75d6154?s=256&d=wavatar', '大包子', '1', '18812341234', '2021-12-19 11:59:19', '', 0, 0, 0);
-INSERT INTO `user` VALUES (13, 'https://www.baidu.com/img/flexible/logo/pc/result@2.png', '大包子', '123', '13112341234', '2021-12-25 14:28:40', '', 0, 0, 0);
+INSERT INTO `user` VALUES (13, 'http://127.0.0.1:8088/2022/01/05/1ca21880-47dc-4bbd-a45c-5f738d6dfdd9.jpg', '大包子', '123', '13112341234', '2021-12-25 14:28:40', '', 0, 0, 0);
 INSERT INTO `user` VALUES (15, 'https://kjava.com/zs/image/IwYyeT', '哈哈哈', '123456', '13312341234', '2021-12-27 11:15:52', '', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (16, 'https://kjava.com/zs/image/OooOTm', 'LCUser-557d', '', '13812341234', '2021-12-27 11:29:27', '', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (17, 'https://kjava.com/zs/image/KSDaC5', '哈哈哈好', '123', '13912341234', '2021-12-27 11:32:41', '', NULL, NULL, NULL);
-INSERT INTO `user` VALUES (18, NULL, '1', '1', '1', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `user` VALUES (19, 'https://kjava.com/zs/image/OooOTm', 'LCUser-08X4', '123', '13412341234', '2022-01-03 10:34:18', '', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (20, 'https://kjava.com/zs/image/OooOTm', 'LCUser-5jae', '199', '19912341234', '2022-01-03 10:36:47', '', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (21, 'https://kjava.com/zs/image/OooOTm', 'LCUser-63Xr', '123', '13712341234', '2022-01-03 10:38:25', '', NULL, NULL, NULL);
@@ -150,6 +154,7 @@ INSERT INTO `user` VALUES (22, 'https://kjava.com/zs/image/OooOTm', 'LCUser-7h7Y
 INSERT INTO `user` VALUES (23, 'http://127.0.0.1:8088/2022/01/03/9fceb1c0-0891-4e1e-a62d-6e9fe8277fb9.jpeg', '大泡泡', '123', '18212341234', '2022-01-03 13:12:53', '', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (24, 'http://127.0.0.1:8088/2022/01/03/ae8aa589-63ae-4e6d-abd7-496b75651488.jpeg', '破败', '6666', '18866666666', '2022-01-03 14:27:42', '', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (25, 'http://127.0.0.1:8088/2022/01/04/7fbeeb1f-eaac-4538-a9cd-94a8f7f59a8a.jpeg', 'xa', '123', '18912342134', '2022-01-04 02:02:33', '', NULL, NULL, NULL);
+INSERT INTO `user` VALUES (26, 'http://127.0.0.1:8088/2022/01/05/863cfa9b-15ce-4aa3-a60e-55e5db801422.JPG', 'HI', '1234556', '16612341234', '2022-01-05 01:09:10', '', NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -164,7 +169,7 @@ CREATE TABLE `work` (
   `like` int(255) DEFAULT NULL,
   `phoneNumber` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of work
@@ -195,6 +200,11 @@ INSERT INTO `work` VALUES (25, 'http://127.0.0.1:8088/2022/01/03/6a7fa4a9-43bc-4
 INSERT INTO `work` VALUES (26, 'http://127.0.0.1:8088/2022/01/03/46816375-2369-47a2-819e-994d8a6a82ac.jpeg', '终于弄好了！', '2022-01-03 13:13:05', 3, '18212341234');
 INSERT INTO `work` VALUES (27, 'http://127.0.0.1:8088/2022/01/03/f77ca2e4-fb76-4c60-9fe1-50d45a90000e.jpeg', '信任', '2022-01-03 14:28:35', 1, '18866666666');
 INSERT INTO `work` VALUES (28, 'http://127.0.0.1:8088/2022/01/04/81223988-7c30-4dee-87a4-3332f8e2fd42.png', 'ho', '2022-01-04 02:03:10', 1, '18912342134');
+INSERT INTO `work` VALUES (29, 'http://127.0.0.1:8088/2022/01/04/98828940-e6ec-49d6-bdc6-4f4ecb3a50e7.jpg', 'Hi', '2022-01-04 15:35:04', 0, '13012341234');
+INSERT INTO `work` VALUES (30, 'http://127.0.0.1:8088/2022/01/04/80352795-3076-497b-95b8-bd8b14d1820b.jpeg', '锦鲤，求好运～', '2022-01-04 15:36:06', 2, '13012341234');
+INSERT INTO `work` VALUES (31, 'http://127.0.0.1:8088/2022/01/04/ffbf1841-f05b-4957-83e3-9fa9acf5659e.jpeg', '难忘', '2022-01-04 15:36:47', 2, '13012341234');
+INSERT INTO `work` VALUES (32, 'http://127.0.0.1:8088/2022/01/05/00382529-8df6-46bd-bc2e-99cc790e5bf9.JPG', 'Hello!', '2022-01-05 00:32:36', 2, '13012341234');
+INSERT INTO `work` VALUES (33, 'http://127.0.0.1:8088/2022/01/05/a2c34041-66e0-4966-a138-5afc1ef55a01.jpg', 'Beautiful Flower!', '2022-01-05 01:09:49', 1, '16612341234');
 COMMIT;
 
 -- ----------------------------
@@ -206,7 +216,7 @@ CREATE TABLE `workLike` (
   `phoneNumber` varchar(255) DEFAULT NULL,
   `workId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of workLike
@@ -226,6 +236,13 @@ INSERT INTO `workLike` VALUES (65, '13012341234', 26);
 INSERT INTO `workLike` VALUES (66, '18866666666', 26);
 INSERT INTO `workLike` VALUES (67, '18866666666', 27);
 INSERT INTO `workLike` VALUES (68, '18912342134', 28);
+INSERT INTO `workLike` VALUES (69, '13012341234', 30);
+INSERT INTO `workLike` VALUES (70, '13012341234', 31);
+INSERT INTO `workLike` VALUES (71, '13012341234', 32);
+INSERT INTO `workLike` VALUES (72, '13112341234', 32);
+INSERT INTO `workLike` VALUES (73, '16612341234', 30);
+INSERT INTO `workLike` VALUES (74, '16612341234', 33);
+INSERT INTO `workLike` VALUES (75, '16612341234', 31);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

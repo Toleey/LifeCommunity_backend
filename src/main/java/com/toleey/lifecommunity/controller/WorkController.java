@@ -183,4 +183,18 @@ public class WorkController {
         return workMapper.getIsLike(like);
     }
 
+    //用户取消点赞
+    @ResponseBody
+    @RequestMapping("/toCancelLike")
+    public Integer cancelLike(HttpServletRequest request){
+        String wId = request.getParameter("workId");
+        Integer workId = Integer.parseInt(wId);
+        String phoneNumber = request.getParameter("phoneNumber");
+
+        WorkLike workLike = new WorkLike();
+        workLike.setWorkId(workId);
+        workLike.setPhoneNumber(phoneNumber);
+        return workMapper.cancelLike(workLike);
+    }
+
 }
